@@ -8,8 +8,12 @@ export async function getStaticPaths() {
   }));
 }
 const { entry } = Astro.props;
+if(!entry){
+  return new Response(null, { status: 404 })
+}
 const { Content } = await entry.render();
 ---
+
 <MarkdownPostLayout frontmatter={entry.data}>
   <Content />
 </MarkdownPostLayout>
