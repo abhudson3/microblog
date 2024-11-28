@@ -1,0 +1,72 @@
+---
+const { title, pubDate, url } = Astro.props;
+---
+
+<li>
+  <style>
+    .micro > div {
+      margin-bottom: 20px;
+      border: 1px solid #000;
+      border-radius: 2px;
+    }
+    .body li,
+    .micro li {
+      list-style-type: "-  ";
+    }
+    .micro > div > .body {
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+
+    .micro > div > .body > p:first-child {
+      margin-top: 0;
+    }
+
+    .micro > div > div:first-child {
+      padding: 10px 20px;
+      border-bottom: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .micro > div > div:first-child > a {
+      font-weight: 700;
+    }
+
+    .micro > div > div:first-child > h1,
+    .micro > div > div:first-child > h2 {
+      font-size: inherit;
+      margin: 0;
+      line-height: inherit;
+    }
+
+    .micro > div > div:first-child > time {
+      white-space: pre;
+    }
+
+    .micro li code,
+    .micro p code {
+      background: #d2deff;
+      color: #3a5bc7;
+      padding: 1px 2px;
+      border-radius: 2px;
+    }
+
+    .micro a {
+      color: #00f;
+    }
+  </style>
+
+    <div class="micro nu">
+      <div>
+        <div>
+          <h1 class="p-name">{title}</h1> <a href={url} >#</a> <time class="dt-published" datetime={pubDate}
+            >{pubDate}</time>
+            <input id="check" name="check" type="checkbox"/>
+        </div><div class="body e-content">
+            <slot/>
+            
+        </div>
+      </div>
+    </div>
+</li>

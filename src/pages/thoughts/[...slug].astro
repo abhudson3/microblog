@@ -1,9 +1,12 @@
 ---
+export const prerender = true;
 import { getCollection } from 'astro:content';
-import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PostEntry from '@/components/entries/PostEntry.astro';
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('posts');
-  return blogEntries.map(entry => ({
+const thoughts = await getCollection('thoughts');
+  console.log('generated thoughts')
+  return thoughts.map(entry => ({
     params: { slug: entry.slug }, props: { entry },
   }));
 }
@@ -13,6 +16,30 @@ if(!entry){
 }
 const { Content } = await entry.render();
 ---
-<MarkdownPostLayout frontmatter={entry.data}>
-  <Content />
-</MarkdownPostLayout>
+<BaseLayout>
+<style>
+  .pad2y {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .limiter {
+    max-width: 640px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+</style>
+    <div class="limiter pad2y">
+        <PostEntry
+        url={entry.slug}
+        pubDate={entry.data.pubDate}
+        title={entry.data.title}
+        >
+            <Content />
+        </PostEntry>
+    </div>
+</BaseLayout>

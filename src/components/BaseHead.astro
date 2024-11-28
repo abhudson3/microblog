@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
@@ -8,6 +9,7 @@ import "../styles/global.css";
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="author" content="Michael Andreuzza" />
 <meta name="your keywords" content="Add ypour keywords here" />
+ <ViewTransitions />
 <!-- Favicon guidelines generated with https://favicon.io/ -->
 <link
   rel="apple-touch-icon"
@@ -26,7 +28,6 @@ import "../styles/global.css";
   sizes="16x16"
   href="/images/favicons/favicon-16x16.png"
 />
-<link rel="manifest" href="/images/favicons/site.webmanifest" />
 <link
   rel="mask-icon"
   href="/images/favicons/safari-pinned-tab.svg"
@@ -34,7 +35,6 @@ import "../styles/global.css";
 />
 <meta name="msapplication-TileColor" content="#ffffff" />
 <meta name="theme-color" content="#ffffff" />
-<link rel="manifest" href="/favicons/site.webmanifest" />
 <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#ffffff" />
 <!-- HTML in your document's head -->
 <link rel="preconnect" href="https://rsms.me/" />

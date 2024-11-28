@@ -30,19 +30,25 @@ const postsCollection = defineCollection({
     tags: z.array(z.string())
   })
 });
+ 
+const thoughtsCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.string(),
+  })
+})
 
 const uhCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
-    description: z.string(),
 
-    tags: z.array(z.string())
   })
 });
 
 export const collections = {
   posts: postsCollection,
   projects: projectsCollection,
-  uhCollection: uhCollection
+  uhCollection: uhCollection,
+  thoughtsCollection: thoughtsCollection
 };

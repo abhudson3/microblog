@@ -1,0 +1,90 @@
+
+---
+const { title, url, siteUrl, description, pubDate, image } = Astro.props;
+---
+
+<li>
+  <style>
+    .micro > div {
+      margin-bottom: 20px;
+      border: 1px solid #000;
+      border-radius: 2px;
+    }
+    .body li,
+    .micro li {
+      list-style-type: "-  ";
+    }
+    .micro > div > .body {
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+
+    .micro > div > .body > p:first-child {
+      margin-top: 0;
+    }
+
+    .micro > div > div:first-child {
+      padding: 10px 20px;
+      border-bottom: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .micro > div > div:first-child > a {
+      font-weight: 700;
+    }
+
+    .micro > div > div:first-child > h1,
+    .micro > div > div:first-child > h2 {
+      font-size: inherit;
+      margin: 0;
+      line-height: inherit;
+    }
+
+    .micro > div > div:first-child > time {
+      white-space: pre;
+    }
+
+    .micro li code,
+    .micro p code {
+      background: #d2deff;
+      color: #3a5bc7;
+      padding: 1px 2px;
+      border-radius: 2px;
+    }
+
+    .micro a {
+      color: #00f;
+    }
+  </style>
+
+    <div class="micro nu">
+      <div>
+        <div>
+          <h1 class="p-name">Reaction 7</h1><time class="dt-published" datetime="2024-11-13"
+            >2024-11-19</time>
+        </div><div class="body e-content">
+        <ul>
+            <li>Community service is the act of volunteering in a community to address a community need. This is usually outside of the context of academics or education.
+            <br/>
+            <br/>
+            <li>Service learning is community service with academics elements integrated into the process. The goal is to enhance learning outcomes and community engagement and community awareness. Service learning also serves to connect the knowledge we learn in the classroom with real world application and social responsiblity.
+            <br/>
+            <br/>
+            <li>Engaged scholarship seems to be a research oriented approach that is a more academic verison of service learning. The goal is to generate knowledge that benefits academia as well as the community, and solve problems in the process.
+            <br/>
+            <br/>
+            <li>The Tuscaloosa Rocketry challenge seems to fall squarely into the idea of service learning. Although it is semi-pedagogical in nature, it focuses more on community service than actual academics, where engaged scholarship seems to fall more strictly under academics with an emphasis on service and improving a community.</li>
+            <br/>
+            <br/>
+            <li>Being able to see social dynamics in the schools, such as the type of school and the way the classes were run and organized, helped drive home some of the things we talked about in regards to education in society. This real world experince helped me understand the concepts we discussed given that I was able to watch them take place.</li>
+            <br/>
+            <br/>
+            <li>If TRC was to be squarely engaged scholarship, I think the project from our perspective would have to focus more on some sort of research question or hypothesis, such as how our volunteering affects the community.
+            <br/>
+            <br/>
+        </ul>
+        </div>
+      </div>
+    </div>
+</li>

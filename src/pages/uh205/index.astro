@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import EntriesOne from "@/components/entries/EntriesOne.astro";
+import PostEntryUH from "@/components/entries/PostEntryUH.astro"
 const allPosts = await getCollection("projects");
 
 // Sort posts by date in descending order (newest first)
@@ -11,24 +11,35 @@ const sortedPosts = allPosts.sort(
 );
 ---
 <BaseLayout>
-  <section>
-    <div class="px-8 md:px-12 mx-auto max-w-7xl py-12 lg:px-32">
+<style>
+  .pad2y {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .limiter {
+    max-width: 640px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+</style>
+    <div class="pad2y limiter content">
+
       <ul
-        class="grid grid-cols-1 mt-12 gap-1 gap-y-24 lg:grid-cols-3 sm:grid-cols-2"
       >
-        {
-          sortedPosts.map((post) => (
-            <EntriesOne
-              url={"/projects/" + post.slug}
-              image={post.data.image?.url}
-              siteUrl={post.data.siteUrl}
-              title={post.data.name}
-              description={post.data.description}
-              alt={post.data.name}
+            <PostEntryUH
+              url={"/uh205/" + sortedPosts[0].slug}
+              image={sortedPosts[0].data.image?.url}
+              siteUrl={sortedPosts[0].data.siteUrl}
+              title={sortedPosts[0].data.name}
+              description={sortedPosts[0].data.description}
+              alt={sortedPosts[0].data.name}
             />
-          ))
-        }
+        
       </ul>
     </div>
-  </section>
 </BaseLayout>
