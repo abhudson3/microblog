@@ -2,14 +2,26 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PostEntry from "@/components/entries/PostEntry.astro"
+
 const allPosts = await getCollection("thoughts");
 
 // Sort posts by date in descending order (newest first)
 const sortedPosts = allPosts.sort(
-    //@ts-ignore
   (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
 );
+
+// Pre-render all content
+const renderedPosts = await Promise.all(
+  sortedPosts.map(async (post) => {
+    const { Content } = await post.render();
+    return {
+      post,
+      Content
+    };
+  })
+);
 ---
+
 <BaseLayout>
 <style>
   .pad2y {
@@ -29,18 +41,15 @@ const sortedPosts = allPosts.sort(
     <div class="pad2y limiter content">
       <ul>
         {
-          sortedPosts.map(async (post) => {
-            const { Content } = await post.render();
-            return (
-              <PostEntry
-                url={"/thoughts/" + post.slug}
-                pubDate={post.data.pubDate}
-                title={post.data.title}
-              >
-                <Content />
-              </PostEntry>
-            );
-          })
+          renderedPosts.map(({ post, Content }) => (
+            <PostEntry
+              url={"/thoughts/" + post.slug}
+              pubDate={post.data.pubDate}
+              title={post.data.title}
+            >
+              <Content />
+            </PostEntry>
+          ))
         }
       </ul>
     </div>
