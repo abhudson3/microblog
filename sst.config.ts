@@ -12,6 +12,7 @@ export default $config({
     new sst.aws.Astro("MyWeb", {
       domain:{
         name: "andrewbhudson.dev",
+        redirects: ["www.andrewbhudson.dev"],
         dns: sst.cloudflare.dns()
       }
     });
