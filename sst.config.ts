@@ -15,6 +15,8 @@ export default $config({
         dns: sst.cloudflare.dns()
       }
     });
+   
     
-  },
+  }, 
+  
 });

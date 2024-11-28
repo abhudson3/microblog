@@ -9,15 +9,6 @@ const sortedPosts = allPosts.sort(
     //@ts-ignore
   (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
 );
-const postsWithContent = await Promise.all(
-  sortedPosts.map(async (post) => {
-    const { Content } = await post.render();
-    return {
-      ...post,
-      Content
-    };
-  })
-);
 ---
 <BaseLayout>
 <style>
@@ -34,21 +25,22 @@ const postsWithContent = await Promise.all(
     box-sizing: border-box;
     overflow-x: hidden;
   }
-  
 </style>
     <div class="pad2y limiter content">
-      <ul
-      >
+      <ul>
         {
-        postsWithContent.map((post) => (
-            <PostEntry
-              url={"/thoughts/" + post.slug }
-              pubDate={post.data.pubDate}
-              title={post.data.title}
-            >
-              <post.Content />
-            </PostEntry>
-          ))
+          sortedPosts.map(async (post) => {
+            const { Content } = await post.render();
+            return (
+              <PostEntry
+                url={"/thoughts/" + post.slug}
+                pubDate={post.data.pubDate}
+                title={post.data.title}
+              >
+                <Content />
+              </PostEntry>
+            );
+          })
         }
       </ul>
     </div>
