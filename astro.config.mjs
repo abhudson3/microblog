@@ -7,8 +7,8 @@ import aws from "astro-sst";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
-  adapter: aws(),
+  site: 'https://andrewbhudson.dev',
+  output: "static",
   markdown: {
     drafts: true,
     shikiConfig: {
