@@ -3,18 +3,18 @@ export const prerender = true;
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PostEntry from "@/components/entries/PostEntry.astro"
-
+import { render } from "astro:content";
 const allPosts = await getCollection("thoughts");
 
 // Sort posts by date in descending order (newest first)
 const sortedPosts = allPosts.sort(
-  (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
+  (a, b) => b.data.pubDate- a.data.pubDate
 );
 
 // Pre-render all content
 const renderedPosts = await Promise.all(
   sortedPosts.map(async (post) => {
-    const { Content } = await post.render();
+    const { Content } = await render(post);
     return {
       post,
       Content
@@ -30,7 +30,7 @@ const renderedPosts = await Promise.all(
     padding-bottom: 20px;
   }
   .limiter {
-    max-width: 640px;
+    max-width: 750px;
     padding-left: 20px;
     padding-right: 20px;
     margin-left: auto;
@@ -42,9 +42,9 @@ const renderedPosts = await Promise.all(
     <div class="pad2y limiter content">
       <ul>
         {
-          renderedPosts.map(({ post, Content }) => (
+          renderedPosts.map(({post, Content}) => (
             <PostEntry
-              url={"/thoughts/" + post.slug}
+              url={"/thoughts/" + post.id}
               pubDate={post.data.pubDate}
               title={post.data.title}
             >

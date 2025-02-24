@@ -1,20 +1,21 @@
 ---
+import type { GetStaticPaths } from "astro";
 export const prerender = true;
-import { getCollection } from 'astro:content';
+import { getCollection, render, getEntry } from 'astro:content';
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PostEntry from '@/components/entries/PostEntry.astro';
 export async function getStaticPaths() {
-const thoughts = await getCollection('thoughts');
-  console.log('generated thoughts')
-  return thoughts.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  const blogEntries = await getCollection('thoughts');
+  return blogEntries.map(post => ({
+    params: { slug: post.id }, props: { post },
   }));
 }
-const { entry } = Astro.props;
-if(!entry){
-  return new Response(null, { status: 404 })
+const { post } = Astro.props;
+if (!post) {
+  // Handle Error, for example:
+  throw new Error('Could not find blog post 1');
 }
-const { Content } = await entry.render();
+const { Content } = await render(post);
 ---
 <BaseLayout>
 <style>
@@ -23,7 +24,7 @@ const { Content } = await entry.render();
     padding-bottom: 20px;
   }
   .limiter {
-    max-width:800px;
+    max-width:750px;
     padding-left: 20px;
     padding-right: 20px;
     margin-left: auto;
@@ -35,9 +36,9 @@ const { Content } = await entry.render();
 </style>
     <div class="limiter pad2y">
         <PostEntry
-        url={entry.slug}
-        pubDate={entry.data.pubDate}
-        title={entry.data.title}
+        url={post.id}
+        pubDate={post.data.pubDate}
+        title={post.data.title}
         >
             <Content />
         </PostEntry>
