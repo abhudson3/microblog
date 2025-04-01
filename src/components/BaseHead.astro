@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <meta charset="utf-8" />
@@ -10,7 +10,7 @@ import { ViewTransitions } from "astro:transitions";
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="author" content="Michael Andreuzza" />
 <meta name="your keywords" content="Add ypour keywords here" />
-<ViewTransitions />
+<ClientRouter/>
 <!-- Favicon guidelines generated with https://favicon.io/ -->
 <link
   rel="apple-touch-icon"
@@ -54,12 +54,16 @@ import { ViewTransitions } from "astro:transitions";
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-R3YECG3CGK"
 ></script>
 <script>
+  //@ts-ignore
   window.dataLayer = window.dataLayer || [];
   function gtag() {
+  //@ts-ignore
     dataLayer.push(arguments);
   }
+  //@ts-ignore
   gtag("js", new Date());
 
+  //@ts-ignore
   gtag("config", "G-R3YECG3CGK");
 </script>
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
