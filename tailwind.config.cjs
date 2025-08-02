@@ -108,9 +108,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        display: ["Gilda Display", ...defaultTheme.fontFamily.sans],
-        mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "Roboto", ...defaultTheme.fontFamily.sans],
+        display: ["'Gilda Display'", "Georgia", "'Times New Roman'", ...defaultTheme.fontFamily.serif],
+        mono: ["'JetBrains Mono'", "'SF Mono'", "Monaco", "Inconsolata", "'Roboto Mono'", ...defaultTheme.fontFamily.mono],
       },
     },
   },
