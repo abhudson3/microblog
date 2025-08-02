@@ -37,19 +37,27 @@ import { ClientRouter } from "astro:transitions";
 <meta name="msapplication-TileColor" content="#ffffff" />
 <meta name="theme-color" content="#ffffff" />
 <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#ffffff" />
-<!-- HTML in your document's head -->
-<link rel="preconnect" href="https://rsms.me/" />
+
+<!-- Font optimization: preconnect to external font sources -->
+<link rel="preconnect" href="https://rsms.me/" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://api.fontshare.com" />
+
+<!-- Preload critical fonts to reduce FOUT -->
+<link rel="preload" href="https://rsms.me/inter/font-files/InterVariable.woff2?v=4.0" as="font" type="font/woff2" crossorigin />
+
+<!-- Font stylesheets with font-display: swap for better loading performance -->
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <link
   href="https://api.fontshare.com/v2/css?f[]=jet-brains-mono@1,2&display=swap"
   rel="stylesheet"
 />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Gilda+Display:wght@400&display=swap"
   rel="stylesheet"
 />
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-R3YECG3CGK"
 ></script>
