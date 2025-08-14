@@ -4,11 +4,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import EntriesOne from "@/components/entries/EntriesOne.astro";
 const allPosts = await getCollection("projects");
 
-// Sort posts by date in descending order (newest first)
-const sortedPosts = allPosts.sort(
-      //@ts-ignore
-  (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
-);
+// Sort projects alphabetically by name
+const sortedPosts = allPosts.sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 <BaseLayout>
   <section>

@@ -1,15 +1,56 @@
 ---
-import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from "astro";
+export const prerender = true;
+import { getCollection, render } from 'astro:content';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('posts');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.slug }, props: { project },
   }));
 }
-const { entry } = Astro.props;
-if(!entry){
-  return new Response(null, { status: 404 })
+const { project } = Astro.props;
+if (!project) {
+  throw new Error('Could not find project');
 }
-const { Content } = await entry.render();
+const { Content } = await render(project);
 ---
-  <Content />
+<BaseLayout>
+  <section>
+    <div class="px-8 py-12 md:px-12 mx-auto lg:pt-24 max-w-3xl lg:px-32">
+      <div class="lg:text-left">
+        {project.data.image?.url ? (
+          <img
+            class="w-full rounded-md object-cover object-center"
+            src={project.data.image.url}
+            alt={project.data.image.alt}
+          />
+        ) : (<></>)}
+
+        <h1 class="text-4xl tracking-tight mt-8 font-medium font-display text-black md:text-6xl">
+          {project.data.name}
+        </h1>
+        <p class="mt-4 text-zinc-600">{project.data.description}</p>
+
+        {project.data.siteUrl ? (
+          <p class="mt-4 text-sm text-black">
+            <a class="underline" href={"https://" + project.data.siteUrl}>{project.data.siteUrl}</a>
+          </p>
+        ) : (<></>)}
+
+        {project.data.tags?.length ? (
+          <div class="mt-6 flex flex-wrap gap-2">
+            {project.data.tags.map((tag) => (
+              <span class="text-xs px-2 py-1 rounded-full bg-zinc-100 text-zinc-700">{tag}</span>
+            ))}
+          </div>
+        ) : (<></>)}
+      </div>
+
+      <div class="mt-10 prose-styles">
+        <Content />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
