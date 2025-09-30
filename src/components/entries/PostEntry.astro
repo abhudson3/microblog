@@ -8,7 +8,14 @@ const { title, pubDate, url } = Astro.props;
       margin-bottom: 20px;
       border: 1px solid #000;
       border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    
+    .micro > div:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
     .body li,
     .micro li {
       list-style-type: "-  ";
@@ -16,6 +23,11 @@ const { title, pubDate, url } = Astro.props;
     .micro > div > .body {
       background-color: #f9f9f9;
       padding: 20px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .micro > div:hover > .body {
+      background-color: #f5f5f5;
     }
 
     .micro > div > .body > p:first-child {
@@ -31,6 +43,11 @@ const { title, pubDate, url } = Astro.props;
 
     .micro > div > div:first-child > a {
       font-weight: 700;
+      transition: color 0.2s ease;
+    }
+    
+    .micro > div > div:first-child > a:hover {
+      color: #2522FC;
     }
 
     .micro > div > div:first-child > h1,
@@ -54,6 +71,11 @@ const { title, pubDate, url } = Astro.props;
 
     .micro a {
       color: #00f;
+      transition: color 0.2s ease;
+    }
+    
+    .micro a:hover {
+      color: #2522FC;
     }
      
     #checkbox {
