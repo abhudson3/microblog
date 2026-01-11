@@ -4,28 +4,28 @@ const { title, url, siteUrl, description, pubDate, image } = Astro.props;
 ---
 
 <li>
-  <a href={url} title={title} class="group">
-    <article class="flex-1 h-full flex flex-col">
-      <div class="block w-full lg:col-span-2">
-        { image ? <img class="aspect-[2/3] object-cover bg-center h-full w-full" src={image} alt={title}/> : <></> }
+  <a href={url} title={title} class="group block h-full">
+    <article class="flex-1 h-full flex flex-col transition-all duration-300">
+      <div class="block w-full lg:col-span-2 overflow-hidden">
+        { image ? <img class="aspect-[2/3] object-cover bg-center h-full w-full transition-transform duration-500 group-hover:scale-105" src={image} alt={title}/> : <></> }
       </div>
       <div
         class="flex flex-col items-start justify-between h-full flex-1 w-full p-4"
       >
         <div>
           <div class="inline-flex space-x-1 items-center">
-            <div class="flex text-xs text-zinc-400">
+            <div class="flex text-xs text-zinc-400 transition-colors duration-300 group-hover:text-zinc-600">
               <time datetime="2020-03-16">{pubDate}</time>
             </div>
           </div>
-          <p class="text-black mt-2 font-display text-xl text-pretty">
+          <p class="text-black mt-2 font-display text-xl text-pretty transition-colors duration-300 group-hover:text-blue-500">
             {title}
           </p>
         </div>
-        <p class="mt-4 text-sm text-zinc-500 line-clamp-2">{description}</p>
+        <p class="mt-4 text-sm text-zinc-500 line-clamp-2 transition-colors duration-300 group-hover:text-zinc-700">{description}</p>
         {siteUrl ? 
           <p class="mt-4 text-xs font-medium text-black line-clamp-2">https://
-            <a href={"https://" + siteUrl}>{siteUrl}</a>
+            <a href={"https://" + siteUrl} class="hover:text-blue-500 transition-colors duration-300">{siteUrl}</a>
           </p> 
         :
         <></>

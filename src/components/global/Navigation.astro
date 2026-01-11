@@ -11,7 +11,7 @@
         class="flex flex-row items-center justify-between md:justify-start"
       >
         <a
-          class="text-black hover:text-zinc-500 items-center font-normal uppercase gap-3 inline-flex "
+          class="text-black hover:text-zinc-500 items-center font-normal uppercase gap-3 inline-flex link-underline"
           href="/"
         >
 
@@ -19,10 +19,11 @@
         </a>
         <button
           @click="open = !open"
-          class="inline-flex items-center justify-center p-2 text-black hover:text-blue-500 focus:outline-none focus:text-black md:hidden"
+          class="inline-flex items-center justify-center p-2 text-black hover:text-blue-500 focus:outline-none focus:text-black md:hidden transition-all duration-300 hover:scale-110"
         >
           <svg
-            class="w-6 h-6"
+            class="w-6 h-6 transition-transform duration-300"
+            :class="{'rotate-90': open}"
             stroke="currentColor"
             fill="none"
             viewBox="0 0 24 24"
@@ -55,7 +56,7 @@
           <li>
             <a
               href="/projects"
-              class=" text-black hover:text-blue-500"
+              class="text-black hover:text-blue-500 link-underline"
             >
             Projects
             </a>
@@ -63,7 +64,7 @@
           <li>
             <a
               href="/thoughts"
-              class=" text-black hover:text-blue-500"
+              class="text-black hover:text-blue-500 link-underline"
             >
            Thoughts 
             </a>
@@ -71,7 +72,7 @@
           <li>
             <a
               href="/uh205"
-              class=" text-black hover:text-blue-500"
+              class="text-black hover:text-blue-500 link-underline"
             >
            UH 205 
             </a>
@@ -79,7 +80,7 @@
           <li>
             <a
               href="https://github.com/abhudson3"
-              class="py-1.5 px-4 border focus:ring-2 h-8  rounded-full border-transparent bg-black hover:bg-black/10 text-white duration-200 focus:ring-offset-2 focus:ring-white hover:text-black inline-flex items-center justify-center ring-1 ring-transparent lg:ml-auto"
+              class="py-1.5 px-4 border h-8 rounded-full border-black bg-black hover:bg-white text-white hover:text-black inline-flex items-center justify-center lg:ml-auto transition-all duration-300 ease-out hover:shadow-lg"
             >
              GitHub
             </a>

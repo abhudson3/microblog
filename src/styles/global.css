@@ -76,6 +76,7 @@
 /* Reserve space for vertical scrollbar to prevent layout shift between pages */
 html {
   scrollbar-gutter: stable;
+  scroll-behavior: smooth;
 }
 
 /* Fallback for browsers without scrollbar-gutter support */
@@ -83,4 +84,70 @@ html {
   html {
     overflow-y: scroll;
   }
+}
+
+/* Joyful minimal interactions */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced focus states with joy */
+:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 4px;
+  transition: outline-offset 0.2s ease;
+}
+
+/* Subtle lift on interactive elements */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Smooth underline animation for links */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Smooth scale on hover */
+.hover-scale {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Gentle glow effect */
+.hover-glow {
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }

@@ -7,6 +7,22 @@ import Footer from "@/components/global/Footer.astro";
 <html lang="en">
   <head>
     <BaseHead />
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      main {
+        animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    </style>
   </head>
   <body class="bg-white flex flex-col min-h-screen">
     <Navigation />
