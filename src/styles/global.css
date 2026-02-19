@@ -75,6 +75,7 @@
 
 /* Reserve space for vertical scrollbar to prevent layout shift between pages */
 html {
+  font-size: 14px;
   scrollbar-gutter: stable;
 }
 
@@ -83,4 +84,16 @@ html {
   html {
     overflow-y: scroll;
   }
+}
+
+.link-underline {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: #a3a3a3;
+  transition: text-decoration-color 150ms ease;
+}
+
+.link-underline:hover {
+  text-decoration-color: #000000;
 }
