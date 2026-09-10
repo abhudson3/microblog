@@ -30,6 +30,10 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 All commands are run from the root of the project, from a terminal:
 
+Use npm and commit `package-lock.json` when dependencies change. Keep npm as the
+only package manager: a Bun lockfile makes Cloudflare select Bun for installs.
+For a clean install matching CI, run `npm ci`.
+
 | Command                | Action                                           |
 | :--------------------- | :----------------------------------------------- |
 | `npm install`          | Installs dependencies                            |
