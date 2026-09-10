@@ -7,7 +7,10 @@
     "astro": "astro",
     "build": "astro build",
     "dev": "astro dev",
+    "deploy": "astro build && wrangler deploy",
+    "deploy:check": "astro build && wrangler deploy --dry-run",
     "preview": "astro preview",
+    "preview:worker": "astro build && wrangler dev",
     "start": "astro dev"
   },
   "dependencies": {
@@ -23,5 +26,8 @@
     "astro": "5.17.3",
     "preact": "^10.28.4",
     "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "wrangler": "^4.79.0"
   }
 }
